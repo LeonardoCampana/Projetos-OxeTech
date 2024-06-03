@@ -33,9 +33,19 @@ def marcar_como_concluida(lista, tarefa):
     clear_console()
     return print(f"tarefa '{tarefa}' não encontrada")
 
+def remover_concluidas(lista):
+    count = 0
+    for i in lista:
+        if i['status'] == 'concluída':
+            lista.remove(i)
+            count += 1
+    
+    return print(f"{count} tarefas foram removidas")
+
+
 opcao = 0
 
-while opcao != 5:
+while opcao != 6:
 
     print(
         "O que deseja fazer: \n" +
@@ -43,7 +53,8 @@ while opcao != 5:
         "2 - Remover uma tarefa existente.\n" +
         "3 - Listar todas as tarefas pendentes.\n" +
         "4 - Marcar uma tarefa como concluída.\n" +
-        "5 - Sair"
+        "5 - Remover todas as tarefas concluídas\n" +
+        "6 - Sair"
     )
     
     opcao = int(input())
@@ -76,6 +87,11 @@ while opcao != 5:
         clear_console()
         marcar_como_concluida(lista_de_tarefas , tarefa)
         input("Aperte ENTER para continuar")
+    
+    elif opcao == 5:
+        remover_concluidas(lista_de_tarefas)
+        input("Aperte ENTER para continuar")
+
     
     clear_console()
          
